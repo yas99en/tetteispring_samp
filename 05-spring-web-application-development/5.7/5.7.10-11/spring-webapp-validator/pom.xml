@@ -6,7 +6,7 @@
          ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>spring-webapp-validator</artifactId>
+	<artifactId>05.7-spring-webapp-validator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>spring-webapp-validator</name>

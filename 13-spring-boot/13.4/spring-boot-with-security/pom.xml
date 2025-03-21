@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-with-security</artifactId>
+	<artifactId>13.4-spring-boot-with-security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-with-security</name>
 	<description>Demo project for Spring Boot</description>

@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-test-di-container</artifactId>
+    <artifactId>08.2-spring-test-di-container</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-test-di-container</name>

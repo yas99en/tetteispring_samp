@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-webapp-request-data</artifactId>
+    <artifactId>05.5-spring-webapp-request-data</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-webapp-request-data</name>

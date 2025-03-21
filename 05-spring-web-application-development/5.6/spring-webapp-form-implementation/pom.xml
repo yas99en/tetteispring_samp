@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-webapp-form-implementation</artifactId>
+    <artifactId>05.6-spring-webapp-form-implementation</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-webapp-form-implementation</name>

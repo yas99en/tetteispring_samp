@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-mybatis-setup</artifactId>
+    <artifactId>11.2-spring-mybatis-setup</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-mybatis-setup</name>

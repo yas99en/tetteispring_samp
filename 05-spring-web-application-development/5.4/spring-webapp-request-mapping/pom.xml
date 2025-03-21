@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-webapp-request-mapping</artifactId>
+    <artifactId>05.4-spring-webapp-request-mapping</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-webapp-request-mapping</name>

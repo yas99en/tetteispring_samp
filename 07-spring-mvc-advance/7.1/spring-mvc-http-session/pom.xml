@@ -6,7 +6,7 @@
          ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>spring-mvc-http-session</artifactId>
+	<artifactId>07.1-spring-mvc-http-session</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>spring-mvc-http-session</name>

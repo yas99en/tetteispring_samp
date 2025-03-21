@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.app</groupId>
-    <artifactId>handle-various-exceptions</artifactId>
+    <artifactId>06.5-handle-various-exceptions</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>handle-various-exceptions</name>

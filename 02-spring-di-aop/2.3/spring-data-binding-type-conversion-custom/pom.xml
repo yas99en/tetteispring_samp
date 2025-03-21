@@ -6,7 +6,7 @@
          ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>spring-data-binding-type-conversion-custom</artifactId>
+	<artifactId>02.3-spring-data-binding-type-conversion-custom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>spring-data-binding-type-conversion-custom</name>

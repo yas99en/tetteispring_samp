@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-di-demo-scoped-proxy</artifactId>
+    <artifactId>02.1.7-spring-di-demo-scoped-proxy</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-di-demo-scoped-proxy</name>

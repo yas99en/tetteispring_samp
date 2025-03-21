@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-typesafe</artifactId>
+	<artifactId>13.5-spring-boot-typesafe</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-typesafe</name>
 	<description>Demo project for Spring Boot</description>

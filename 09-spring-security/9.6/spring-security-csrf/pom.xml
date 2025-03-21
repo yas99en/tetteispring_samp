@@ -6,7 +6,7 @@
          ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>spring-security-csrf</artifactId>
+	<artifactId>09.6-spring-security-csrf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>spring-security-csrf</name>

@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.app</groupId>
-    <artifactId>multipart</artifactId>
+    <artifactId>07.2-multipart</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>multipart</name>

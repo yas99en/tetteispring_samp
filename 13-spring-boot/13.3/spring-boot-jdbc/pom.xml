@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-jdbc</artifactId>
+	<artifactId>13.3-spring-boot-jdbc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-jdbc</name>
 	<description>Demo project for Spring Boot</description>

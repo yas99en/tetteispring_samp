@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-data-jpa-repository-crud</artifactId>
+    <artifactId>10.6-spring-data-jpa-repository-crud</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-jpa-repository-crud</name>

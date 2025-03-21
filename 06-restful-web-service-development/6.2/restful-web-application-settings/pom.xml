@@ -6,7 +6,7 @@
          ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>restful-web-application-settings</artifactId>
+	<artifactId>06.2-restful-web-application-settings</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>restful-web-application-settings</name>

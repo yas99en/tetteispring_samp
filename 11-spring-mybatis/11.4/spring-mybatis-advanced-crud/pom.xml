@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>spring-mybatis-advanced-crud</artifactId>
+    <artifactId>11.4-spring-mybatis-advanced-crud</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-mybatis-advanced-crud</name>
