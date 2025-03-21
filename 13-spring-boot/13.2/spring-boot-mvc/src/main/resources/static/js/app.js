@@ -1,0 +1,1 @@
+document.write("<p>JavaScript Test</p>");

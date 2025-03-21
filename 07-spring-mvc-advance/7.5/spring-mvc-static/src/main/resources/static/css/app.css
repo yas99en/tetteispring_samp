@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* 7.5.2.4. リンクを含むオリジナルのCSSファイル */
+/* オリジナルのCSSファイルにはバージョンなしのパスを指定する */
+@import url(../css/fw.css);
+body {
+	background-image: url("../images/body-background.png");
+}

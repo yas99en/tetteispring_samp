@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 11.3.2. マッピングファイルの作成 マッピングファイルの作成例 -->
+<mapper namespace="com.example.domain.mapper.MeetingRoomMapper">
+	<!-- 11.3.2. マッピングファイルの作成 CDATAセクションの活用例 -->
+	<select id="findRoomsWithCDATA" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			<![CDATA[
+				capacity >= 30
+			]]>
+	</select>
+	
+	<!-- 11.3.3.1. バインド変数の利用 MyBatisのバインド変数の利用例 -->
+	<select id="findOne" parameterType="string" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			room_id = #{roomId} <!-- MyBatisのバインド変数 -->
+	</select>
+
+	<!-- 11.3.3.2. 置換変数の利用 MyBatisの置換変数の利用例 -->
+	<select id="findAll" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		ORDER BY
+			${orderByColumn} <!-- MyBatisの置換変数 -->
+	</select>
+
+	<!-- 11.3.4.2. 引数が1つでJavaBeanの場合 SQLの記述例 -->
+	<insert id="create" parameterType="MeetingRoom">
+		INSERT INTO meeting_room (room_id, room_name, capacity)
+			VALUES (#{roomId}, #{roomName}, #{capacity})
+	</insert>
+
+	<!-- 11.3.4.3. 引数が2つ以上の場合 SQLの記述例 -->
+	<insert id="createMoreArguments" parameterType="MeetingRoom">
+		INSERT INTO meeting_room (room_id, room_name, capacity)
+			VALUES (#{roomId}, #{roomName}, #{capacity})
+	</insert>
+	
+	<!-- 11.3.4.3. 引数が2つ以上の場合 SQLの記述例 JavaBean -->
+	<select id="findAllByCriteria" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			capacity >= #{criteria.capacity}
+		ORDER BY
+			${orderByColumn}
+	</select>
+
+	<!-- 11.3.4.4. MyBatis提供の特殊クラスの扱い SQLの記述例 RowBounds -->
+	<select id="findRangeByCapacity" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			capacity >= #{capacity}
+	</select>
+
+	<!-- 11.3.4.4. MyBatis提供の特殊クラスの扱い SQLの記述例 ResultHandler -->
+	<select id="collectByCapacity" resultType="MeetingRoom">
+		SELECT
+			room_id AS roomId,
+			room_name AS roomName,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			capacity >= #{capacity}
+	</select>
+
+	<!-- 11.3.5.2. ResultSetとJavaBeanの明示的なマッピング マッピングファイルを使用した明示的なマッピング例 -->
+	<resultMap id="roomResultMap" type="MeetingRoom"> 
+		<id column="room_id" property="roomId" />
+		<result column="room_name" property="roomName" />
+	</resultMap>
+	<select id="findOneWithResultMap" parameterType="string" resultMap="roomResultMap">
+		SELECT
+			room_id,
+			room_name,
+			capacity
+		FROM
+			meeting_room
+		WHERE
+			room_id = #{roomId}
+	</select>
+	
+	<!-- 11.3.6.1. キー取得機能の利用 マッピングファイルの実装例 -->
+	<insert id="createByXMLWithSelectKey" parameterType="MeetingRoom">
+		<selectKey keyProperty="roomId" order="BEFORE" resultType="string">
+			SELECT gen_random_uuid()
+		</selectKey>
+		INSERT INTO meeting_room (room_id, room_name, capacity)
+			VALUES (#{roomId}, #{roomName}, #{capacity})
+	</insert>
+	
+	<!-- 11.3.6.2. ID列の利用 マッピングファイルの実装例 -->
+	<insert id="createByXMLWithGeneratedKeys" parameterType="MeetingRoom" useGeneratedKeys="true" keyProperty="roomId">
+		INSERT INTO meeting_room_2 (room_name, capacity)
+			VALUES (#{roomName}, #{capacity})
+	</insert>
+
+	<!-- 11.3.7. UPDATE操作の実装 マッピングファイルの実装例 -->
+	<update id="update" parameterType="MeetingRoom">
+		UPDATE
+			meeting_room
+		SET
+			room_name = #{roomName},
+			capacity = #{capacity}
+		WHERE
+			room_id = #{roomId}
+	</update>
+
+	<!-- 11.3.8. DELETE操作の実装 マッピングファイルの実装例 -->
+	<delete id="delete" parameterType="string">
+		DELETE
+		FROM
+			meeting_room
+		WHERE
+			room_id = #{roomId}
+	</delete>
+</mapper>

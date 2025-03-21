@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 11.2.3. MyBatisの設定 mybatis-config.xml -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL" />
+        <setting name="defaultFetchSize" value="100"/>
+    </settings>
+    <typeAliases>
+        <package name="com.example.domain.model" />
+    </typeAliases>
+</configuration>

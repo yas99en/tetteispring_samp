@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+    <!-- JNDI定義 -->  
+    <Resource name="jdbc/dataSource" auth="Container"
+          type="javax.sql.DataSource"
+          driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://localhost/sample"
+          username="postgres"
+          password="postgres"
+          maxTotal="96"
+          maxIdle="16"
+          maxWaitMillis="60000"/>
+</Context>

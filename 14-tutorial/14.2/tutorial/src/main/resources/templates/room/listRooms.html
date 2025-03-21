@@ -1,0 +1,25 @@
+<!-- 14.2.6.3. コントローラクラスおよびHTMLの作成 listRooms.html -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2024/3/22の会議室</title>
+</head>
+<body>
+	<h3>会議室</h3>
+	<a th:href="@{'/rooms/' + ${date.minusDays(1)}}">&lt; 前日</a>
+	<span th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2024/3/22の会議室</span>
+	<a th:href="@{'/rooms/' + ${date.plusDays(1)}}">翌日 &gt;</a>
+	<ul>
+		<li th:each="room: ${rooms}">
+			<a th:href="@{'/reservations/' + ${date} + '/' + ${room.meetingRoom.roomId}}"
+		  	   th:text="${room.meetingRoom.roomName}"></a>
+		</li>
+	</ul>
+	<!-- 14.2.8.4. ログアウトボタンの追加 -->
+	<form th:action="@{/logout}" method="post">
+		<button>ログアウト</button>
+	</form>
+</body>
+</html>

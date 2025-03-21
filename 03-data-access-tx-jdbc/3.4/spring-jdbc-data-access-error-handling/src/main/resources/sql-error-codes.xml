@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 3.4.3.2. クラスパス直下のsql-error-codes.xml -->
+	<bean id="PostgreSQL" name="Postgres"
+		class="org.springframework.jdbc.support.SQLErrorCodes">
+		<property name="useSqlStateForTranslation">
+			<value>true</value>
+		</property>
+		<property name="badSqlGrammarCodes">
+			<value>03000,42000,42601,42602,42622,42804,42P01</value>
+		</property>
+		<!-- (1) 
+		<property name="duplicateKeyCodes">
+			<value>21000,23505</value> 
+		</property> 
+		-->
+		<property name="dataIntegrityViolationCodes">
+			<!-- (2) --> 
+			<value>21000,23505,23000,23502,23503,23514</value>
+		</property>
+		<property name="dataAccessResourceFailureCodes">
+			<value>53000,53100,53200,53300</value>
+		</property>
+		<property name="cannotAcquireLockCodes">
+			<value>55P03</value>
+		</property>
+		<property name="cannotSerializeTransactionCodes">
+			<value>40001</value>
+		</property>
+		<property name="deadlockLoserCodes">
+			<value>40P01</value>
+		</property>
+	</bean>
+
+</beans>

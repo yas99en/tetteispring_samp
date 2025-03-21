@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="#{app.title}">Hello</title> <!-- メッセージの外部化 ${変数名}ではなく#{メッセージキー名} -->
+</head>
+<body>
+	<p>
+		<span th:text="${hello}">Hello!</span> <!-- Thymeleafの利用 -->
+	</p>
+</body>
+</html>

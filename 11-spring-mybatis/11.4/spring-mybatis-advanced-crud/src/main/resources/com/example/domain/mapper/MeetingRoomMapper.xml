@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.mapper.MeetingRoomMapper">
+
+	<!-- 11.4.1.1. <where>、<if>の実装例 SQLの記述例 -->
+	<select id="findByCriteria" parameterType="MeetingRoomCriteria" resultType="MeetingRoom">
+		SELECT
+			room_id, room_name, capacity
+		FROM
+			meeting_room
+		<where>
+			<if test="roomId != null">
+				AND room_id LIKE #{roomId} || '%'
+			</if>
+			<if test="roomName != null">
+				AND room_name LIKE #{roomName} || '%'
+			</if>
+			<if test="capacity != null">
+				AND
+				 <![CDATA[
+				 	capacity >= #{capacity}
+				 ]]>
+			</if>
+		</where>
+		ORDER BY
+			room_id
+	</select>
+
+	<!-- 11.4.1.2. <choose>の実装例 SQLの記述例 -->
+	<select id="findByCapacityClass" parameterType="string" resultType="MeetingRoom">
+		SELECT
+		room_id, room_name, capacity
+		FROM
+		meeting_room
+		<where>
+			<choose>
+				<when test="capacityClass == 'small'">
+				 <![CDATA[
+				 	capacity < 50
+				 ]]>
+				</when>
+				<when test="capacityClass == 'middle'">
+				 <![CDATA[
+				 	capacity >= 50 AND capacity < 100
+				 ]]>
+				</when>
+				<otherwise>
+				 <![CDATA[
+				 	capacity >= 100
+				 ]]>
+				</otherwise>
+			</choose>
+		</where>
+		ORDER BY
+			room_id
+	</select>
+
+	<!-- 11.4.1.3. <foreach>の実装例 SQLの記述例 -->
+	<select id="findByRoomIds" parameterType="list" resultType="MeetingRoom">
+		SELECT
+			room_id, room_name, capacity
+		FROM
+			meeting_room
+		<where>
+			<if test="list != null">
+				<foreach item="id" index="index" collection="list"
+					open="room_id IN (" separator="," close=")">
+					#{id}
+				</foreach>
+			</if>
+		</where>
+		ORDER BY
+			room_id
+	</select>
+
+	<!-- 11.4.1.4. <set>の実装例 SQLの記述例 -->
+	<update id="update" parameterType="MeetingRoom">
+		UPDATE
+			meeting_room
+		<set>
+			room_name = #{roomName},
+			<if test="capacity > 0">
+				capacity = #{capacity}
+			</if>
+		</set>
+		WHERE
+			room_id = #{roomId}
+	</update>
+	
+	
+	<!-- 11.4.3.1. 主テーブルと関連テーブルのレコードを別々に取得してマッピングする方法 主テーブルと関連テーブルのレコードを別々に取得する際のマッピング定義例 -->
+	<select id="findOne"
+	    parameterType="string" resultMap="meetingRoomResultMap">
+	    SELECT
+	        room_id, room_name, capacity
+	    FROM
+	        meeting_room
+	    WHERE
+	        room_id = #{roomId}
+	</select>
+	
+	<resultMap id="meetingRoomResultMap" type="MeetingRoom">
+	    <id property="roomId" column="room_id"/>
+	    <result property="roomName" column="room_name"/>
+	    <collection property="reservableRooms" column="room_id"
+	        javaType="ArrayList" select="findReservableRooms"/>
+	</resultMap>
+	
+	<select id="findReservableRooms"
+	    parameterType="string" resultMap="reservableRoomResultMap">
+	    SELECT
+	        room_id, reserved_date
+	    FROM
+	        reservable_room
+	    WHERE
+	        room_id = #{roomId}
+	    ORDER BY
+	        reserved_date
+	</select>
+	
+	<resultMap id="reservableRoomResultMap" type="ReservableRoom">
+	    <result property="roomId" column="room_id"/>
+	    <result property="reservedDate" column="reserved_date"/>
+	    <!-- 　主テーブルと関連テーブルのレコードを別々に取得してマッピングする方法 -->
+		<!-- 　関連テーブルからレコードを取得する際の検索キーが複数ある場合のマッピング定義例 -->
+	    <collection property="reservations"
+	        column="{roomId=room_id, reservedDate=reserved_date}"
+	        javaType="ArrayList" select="findReservations"
+	        fetchType="lazy"/>
+	</resultMap>
+	
+	<select id="findReservations" resultType="Reservation">
+	    SELECT
+	       reservation_id, room_id, reserved_date, start_time, end_time
+	    FROM
+	        reservation
+	    WHERE
+	        room_id = #{roomId}
+	      AND
+	        reserved_date = #{reservedDate}
+	    ORDER BY
+	        start_time
+	</select>
+	
+	<!-- 11.4.3.2. テーブル結合を利用して関連オブジェクトをマッピングする方法 テーブル結合を利用した関連オブジェクトのマッピング定義例  -->
+	<select id="selectJoinMeetingRoom"
+		parameterType="string" resultMap="meetingRoomResultMap2">
+		SELECT
+			mr.room_id, mr.room_name,
+			rr.room_id AS rsv_room_id, rr.reserved_date
+		FROM
+			meeting_room mr
+			LEFT OUTER JOIN reservable_room rr
+				ON mr.room_id = rr.room_id
+		WHERE
+			mr.room_id = #{id}
+	</select>
+	
+	<resultMap id="meetingRoomResultMap2" type="MeetingRoom">
+		<id property="roomId" column="room_id"/>
+		<result property="roomName" column="room_name"/>
+	    <collection property="reservableRooms" javaType="ArrayList" ofType="ReservableRoom">
+			<result property="roomId" column="rsv_room_id"/>
+			<result property="reservedDate" column="reserved_date"/>
+		</collection>
+	</resultMap>
+	
+	<!-- 11.4.4. RowBoundsを利用した範囲検索　マッピングファイルの定義例 -->
+	<select id="findAll" resultType="MeetingRoom">
+		SELECT
+			room_id, room_name, capacity
+		FROM
+			meeting_room
+		ORDER BY
+			room_id
+	</select>
+	
+	<!-- 11.4.5. ResultHandlerによる検索結果の処理　マッピングファイルの定義例　-->
+	<select id="collectAll" resultType="MeetingRoom">
+		SELECT
+			room_id, room_name, capacity
+		FROM
+			meeting_room
+		ORDER BY
+			room_id
+	</select>
+</mapper>
