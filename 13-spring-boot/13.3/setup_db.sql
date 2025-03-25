@@ -2,6 +2,7 @@
 
 -- データベース
 CREATE DATABASE sample13_3;
+\c sample13_3
 
 -- テーブル
 CREATE TABLE IF NOT EXISTS messages (

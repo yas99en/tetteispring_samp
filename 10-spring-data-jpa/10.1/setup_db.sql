@@ -1,5 +1,6 @@
 -- データベース（sample10_1が存在しない場合のみ実行）
 CREATE DATABASE sample10_1;
+\c sample10_1
 
 -- テーブル
 CREATE TABLE IF NOT EXISTS room (

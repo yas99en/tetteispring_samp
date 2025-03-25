@@ -1,5 +1,6 @@
 -- データベース
 CREATE DATABASE sample9_3;
+\c sample9_3
 
 -- ロール
 CREATE TABLE roles(

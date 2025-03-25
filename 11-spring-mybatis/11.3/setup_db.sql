@@ -1,5 +1,6 @@
 -- データベース（sample11が存在しない場合のみ実行）
 CREATE DATABASE sample11;
+\c sample11
 
 -- Postgresでget_random_uuid関数を使用するための設定
 CREATE EXTENSION pgcrypto;

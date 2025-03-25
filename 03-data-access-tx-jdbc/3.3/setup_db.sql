@@ -1,4 +1,5 @@
 CREATE DATABASE sample3_3;
+\c sample3_3
 
 CREATE TABLE room (
     room_id VARCHAR(10) NOT NULL PRIMARY KEY,

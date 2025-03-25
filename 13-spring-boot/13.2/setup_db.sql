@@ -1,5 +1,6 @@
 -- データベース（sample13が存在しない場合のみ実行）
 CREATE DATABASE sample13;
+\c sample13
 
 -- テーブル
 CREATE TABLE IF NOT EXISTS messages (

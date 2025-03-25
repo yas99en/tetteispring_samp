@@ -1,4 +1,5 @@
 CREATE DATABASE sample3_2;
+\c sample3_2
 
 CREATE TABLE usr (
     user_id VARCHAR(10) NOT NULL PRIMARY KEY,
