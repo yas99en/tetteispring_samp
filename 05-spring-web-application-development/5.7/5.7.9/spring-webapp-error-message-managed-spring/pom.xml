@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>05.7-spring-webapp-error-message-managed-spring</artifactId>
+    <artifactId>05.7.9-spring-webapp-error-message-managed-spring</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-webapp-error-message-managed-spring</name>
