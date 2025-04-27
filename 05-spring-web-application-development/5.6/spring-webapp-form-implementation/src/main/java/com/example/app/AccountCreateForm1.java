@@ -21,7 +21,7 @@ public class AccountCreateForm1 implements Serializable {
 	private String tel;
 	
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy/MM/dd") 
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private Date dateOfBirth;
 	
 	@NotNull
