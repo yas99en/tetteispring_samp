@@ -63,6 +63,18 @@
         <c:out value="(${pageContext.request.contextPath}/accounts/{UserID})" />
     </section>
     <section>
+        <h2>5.4.3 HTTPメソッドの使用</h2>
+        <a href="${pageContext.request.contextPath}/accounts/http-method-demo/JohnDoe">
+            URIテンプレート形式のパスパターンの指定例
+        </a>
+        <c:out value="(${pageContext.request.contextPath}/accounts/http-method-demo/{UserID})" />
+        <br>
+        <a href="${pageContext.request.contextPath}/accounts/http-method-demo2/JohnDoe">
+            URIテンプレート形式のパスパターンの指定例
+        </a>
+        <c:out value="(${pageContext.request.contextPath}/accounts/http-method-demo2/{UserID})" />
+    </section>
+    <section>
         <h2>5.4.4 リクエストパラメータの使用</h2>
         <a href="${pageContext.request.contextPath}/accounts/create?form=">リクエストパラメータを使用したリクエストマッピングの指定例</a>
     </section>
