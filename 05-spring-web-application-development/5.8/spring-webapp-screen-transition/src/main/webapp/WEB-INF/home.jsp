@@ -8,5 +8,8 @@
     <ul>
 		<li><a href="${pageContext.request.contextPath}/account/form">検証ページへジャンプ</a></li>
 	</ul>
+    <ul>
+		<li><a href="${pageContext.request.contextPath}/redirect">リダイレクト</a></li>
+	</ul>
 </body>
 </html>
