@@ -2,7 +2,7 @@ package com.example.app;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 // 5.7.5 ネストしたJavaBeans の入力チェック用フォーム
 public class AccountValidAnnotationCheckForm implements Serializable {
