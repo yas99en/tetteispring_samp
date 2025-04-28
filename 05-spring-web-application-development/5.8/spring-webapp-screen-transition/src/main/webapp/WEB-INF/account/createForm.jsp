@@ -8,15 +8,15 @@
 <body>
 	<form:form action="${pageContext.request.contextPath}/account/create" method="post"
 		modelAttribute="accountCreateForm">
-		<input value="次画面へPOST" type="submit" />
+		<input value="次画面へPOST account/create" type="submit" />
 	</form:form>
 	<form:form action="${pageContext.request.contextPath}/account/create2" method="post"
 		modelAttribute="accountCreateForm">
-		<input value="次画面へPOST" type="submit" />
+		<input value="次画面へPOST account/create2" type="submit" />
 	</form:form>
 	<form:form action="${pageContext.request.contextPath}/account/create3" method="post"
 		modelAttribute="accountCreateForm">
-		<input value="次画面へPOST" type="submit" />
+		<input value="次画面へPOST account/create3" type="submit" />
 	</form:form>
 	<a href="${pageContext.request.contextPath}">ホームへ</a>
 
