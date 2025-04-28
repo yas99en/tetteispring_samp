@@ -2,7 +2,7 @@ package com.example.form;
 
 import java.io.Serializable;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 public class AccountCreateForm implements Serializable {
 	private static final long serialVersionUID = 1L;
