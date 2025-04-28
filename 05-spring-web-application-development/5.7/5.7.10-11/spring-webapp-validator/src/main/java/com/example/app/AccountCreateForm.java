@@ -2,8 +2,8 @@ package com.example.app;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Size;
-import javax.validation.groups.Default;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.groups.Default;
 
 public class AccountCreateForm implements Serializable { 
 	
