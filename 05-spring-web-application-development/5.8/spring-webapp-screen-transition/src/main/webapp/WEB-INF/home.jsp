@@ -11,5 +11,8 @@
     <ul>
 		<li><a href="${pageContext.request.contextPath}/redirect">リダイレクト</a></li>
 	</ul>
+    <ul>
+		<li><a href="${pageContext.request.contextPath}/auth/login">ログイン</a></li>
+	</ul>
 </body>
 </html>
