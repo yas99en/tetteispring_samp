@@ -12,6 +12,7 @@
     <form:form modelAttribute="accountOriginalAnnotationCheckForm"> 
     	<span>クーポンコード</span><form:input path="couponCode" /> &nbsp; <form:errors path="couponCode" /><br>
     	<span>パスワード</span><form:input path="password" /> &nbsp; <form:errors path="password" /><br>
+    	<span>パスワード</span><form:input path="reEnteredPassword" /> &nbsp; <form:errors path="reEnteredPassword" /><br>
     	<br>
 		<input value="入力チェック" type="submit"/><br>
 	</form:form>
