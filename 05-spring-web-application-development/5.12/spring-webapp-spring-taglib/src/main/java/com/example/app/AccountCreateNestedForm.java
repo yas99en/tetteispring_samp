@@ -3,7 +3,7 @@ package com.example.app;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.Past;
+import jakarta.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
