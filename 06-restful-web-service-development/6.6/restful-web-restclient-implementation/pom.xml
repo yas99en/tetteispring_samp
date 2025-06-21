@@ -4,7 +4,7 @@
 						">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>06.7-restful-web-restclient-implementation</artifactId>
+	<artifactId>06.6-restful-web-restclient-implementation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>restful-web-restclient-implementation</name>
