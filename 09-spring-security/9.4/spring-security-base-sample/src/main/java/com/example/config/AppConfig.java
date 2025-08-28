@@ -1,6 +1,7 @@
 package com.example.config;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 
 import javax.sql.DataSource;
 
@@ -37,7 +38,7 @@ public class AppConfig {
 		dataSource.setMaxTotal(maxTotal);
 		dataSource.setMaxIdle(maxIdle);
 		dataSource.setMinIdle(minIdle);
-		dataSource.setMaxWaitMillis(maxWaitMillis);
+		dataSource.setMaxWait(Duration.ofMillis(maxWaitMillis));
 		return dataSource;
 	}
 
