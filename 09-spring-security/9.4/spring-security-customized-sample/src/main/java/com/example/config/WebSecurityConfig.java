@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,13 +46,14 @@ public class WebSecurityConfig {
 		return http.build();
 	}
 
-	// AuthenticationManagerのBean定義を行なうためのメソッド
-	@Autowired
-	public void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(accountUserDetailsService) // DaoAuthenticationProviderを有効化
-				.passwordEncoder(passwordEncoder()); // DaoAuthenticationProviderにPasswordEncoderを設定
-	}
-
+//  Spring Security 5.7以降は、AuthenticationManagerBuilderを直接使用しないため、以下のコードはコメントアウトしています。
+//	// AuthenticationManagerのBean定義を行なうためのメソッド
+//	@Autowired
+//	public void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(accountUserDetailsService) // DaoAuthenticationProviderを有効化
+//				.passwordEncoder(passwordEncoder()); // DaoAuthenticationProviderにPasswordEncoderを設定
+//	}
+//
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		// パスワードをBCryptアルゴリズムを使用してハッシュ化
