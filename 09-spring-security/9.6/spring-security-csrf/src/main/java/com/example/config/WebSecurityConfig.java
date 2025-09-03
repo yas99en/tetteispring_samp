@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.domain.service.account.AccountUserDetailsService;
 
@@ -35,12 +36,12 @@ public class WebSecurityConfig {
         ).logout(logout -> logout
                 .logoutSuccessUrl("/logout").permitAll() 
         ).authorizeHttpRequests(authz -> authz
-        		.antMatchers("/resources/**").permitAll()
-        		.antMatchers("/static/**").permitAll()
-        		.antMatchers("/api/**").permitAll() // AJAXのCSRF検証の為、APIへのアクセスを許可
-                .antMatchers("/").permitAll()
-                .antMatchers("/general/**").hasRole("GENERAL")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+        		.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
+        		.requestMatchers(new AntPathRequestMatcher("/static/**")).permitAll()
+        		.requestMatchers(new AntPathRequestMatcher("/api/**")).permitAll() // AJAXのCSRF検証の為、APIへのアクセスを許可
+                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
+                .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
                 .anyRequest().authenticated()
         // 9.6.2. CSRF対策機能の適用
         // CSRF対策機能はデフォルトで有効となっています。

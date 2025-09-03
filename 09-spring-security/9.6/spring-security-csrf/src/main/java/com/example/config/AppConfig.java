@@ -1,5 +1,7 @@
 package com.example.config;
 
+import java.time.Duration;
+
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -37,7 +39,7 @@ public class AppConfig {
         dataSource.setMaxTotal(maxTotal);
         dataSource.setMaxIdle(maxIdle);
         dataSource.setMinIdle(minIdle);
-        dataSource.setMaxWaitMillis(maxWaitMillis);
+		dataSource.setMaxWait(Duration.ofMillis(maxWaitMillis));
         return dataSource;
     }
 
