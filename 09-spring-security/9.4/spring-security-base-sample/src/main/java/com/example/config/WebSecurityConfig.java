@@ -1,6 +1,5 @@
 package com.example.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,20 +9,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.example.domain.service.account.AccountUserDetailsService;
-
 @Configuration
 @EnableWebSecurity // 9.4.11. 認証処理とSpring MVCの連携
 @Import({ WebMvcConfig.class, AppConfig.class })
 public class WebSecurityConfig {
 
-	// 9.4.5.3. 認証処理の適用
-	private AccountUserDetailsService accountUserDetailsService;
+//	// 9.4.5.3. 認証処理の適用
+//	private AccountUserDetailsService accountUserDetailsService;
+//
+//	@Autowired
+//	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
+//		this.accountUserDetailsService = accountUserDetailsService;
+//	}
 
-	@Autowired
-	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
-		this.accountUserDetailsService = accountUserDetailsService;
+	public WebSecurityConfig() {
+		
 	}
+
 
 	// 9.4.2.3. ログインフォームの作成
 	@Bean

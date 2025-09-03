@@ -1,6 +1,5 @@
 package com.example.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,19 +9,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.example.domain.service.account.AccountUserDetailsService;
-
 @Configuration
 @EnableWebSecurity
 @Import({ WebMvcConfig.class, AppConfig.class })
 public class WebSecurityConfig {
 
-	private AccountUserDetailsService accountUserDetailsService;
+//	private AccountUserDetailsService accountUserDetailsService;
 
-	@Autowired
-	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
-		this.accountUserDetailsService = accountUserDetailsService;
+	public WebSecurityConfig() {
 	}
+
+//	@Autowired
+//	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
+//		this.accountUserDetailsService = accountUserDetailsService;
+//	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
