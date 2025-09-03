@@ -1,6 +1,5 @@
 package com.example.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -13,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.example.domain.service.account.AccountUserDetailsService;
 import com.example.security.MyAccessDeniedHandler;
 import com.example.security.MyAuthenticationEntryPoint;
 
@@ -22,11 +20,15 @@ import com.example.security.MyAuthenticationEntryPoint;
 @Import({WebMvcConfig.class, AppConfig.class})
 public class WebSecurityConfig {
 	
-	private AccountUserDetailsService accountUserDetailsService;
+//	private AccountUserDetailsService accountUserDetailsService;
+//
+//	@Autowired
+//	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
+//		this.accountUserDetailsService = accountUserDetailsService;
+//	}
 
-	@Autowired
-	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
-		this.accountUserDetailsService = accountUserDetailsService;
+	public WebSecurityConfig() {
+		
 	}
 
     @Bean
