@@ -17,6 +17,7 @@ public class ApiController {
 		return "api security OK";
 	}
 	
+	// CSRF対策が有効な場合、curlからのPOSTリクエストは403エラーになる
 	@PostMapping("message")
 	public void outputMessage(@RequestBody MessageResource messageResource) {
 		System.out.println(messageResource.getMessage());
