@@ -23,6 +23,8 @@
 			var tokenValue = $("meta[name='_csrf']").attr("content");
 			//　Ajax通信で不正なCSRFトークンが設定されている場合の検証をする際は、こちらの変数を有効にしてください。
 			//var tokenValue = 'dummyToken';
+
+			// ajaxSendイベントで、全てのAjax通信にCSRFトークンヘッダーを設定する
 			$(document).ajaxSend(function(e, xhr, options) {
 				xhr.setRequestHeader(headerName, tokenValue); // CSRFトークン値の設定
 			});
