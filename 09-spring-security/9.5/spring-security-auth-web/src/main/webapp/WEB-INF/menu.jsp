@@ -14,8 +14,8 @@
 		</p>
 		※ 9.5.5 メソッドへの認可 の動作確認は「一般」押下すると確認できます。実装内容の詳細はGeneralController.javaを参照してください。
 		<ul>
-			<li><a href="<c:url value="/admin/" />">管理</a><br />
-			<li><a href="<c:url value="/general/" />">一般</a><br /></li>
+			<li><a href="<c:url value="/admin" />">管理</a><br />
+			<li><a href="<c:url value="/general" />">一般</a><br /></li> ←管理者だとエラーになるように実装されている
 		</ul>
 
 		<!-- 9.5.6 JSPの画面項目への認可 -->
