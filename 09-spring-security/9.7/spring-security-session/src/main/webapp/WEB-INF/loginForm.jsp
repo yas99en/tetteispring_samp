@@ -5,7 +5,7 @@
 </head>
 <body>
 	<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 	<%@ taglib prefix="sec"
 		uri="http://www.springframework.org/security/tags"%>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -35,7 +35,7 @@
 			</table>
 		</form:form>
 		
-		<a href = "/spring-security-auth-web/resources/testpage">/resources/** 配下のページにアクセス</a>
+		<a href = "/spring-security-session/resources/testpage">/resources/** 配下のページにアクセス</a>
 	</div>
 </body>
 </html>
