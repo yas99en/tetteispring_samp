@@ -1,6 +1,6 @@
 package com.example.config;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
 import com.example.domain.service.account.AccountUserDetailsService;
@@ -44,11 +45,11 @@ public class WebSecurityConfig {
 		).logout(logout -> logout
 				.logoutSuccessUrl("/logout").permitAll() 
 		).authorizeHttpRequests(authz -> authz
-				.antMatchers("/resources/**").permitAll()
-				.antMatchers("/").permitAll()
-				.antMatchers("/general/**").hasRole("GENERAL")
-				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/admin/**").access((authentication, context) -> {
+				.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
+				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+				.requestMatchers(new AntPathRequestMatcher("/admin/**")).access((authentication, context) -> {
 					IpAddressMatcher ipAddressMatcher = new IpAddressMatcher("127.0.0.1");
 					HttpServletRequest request = context.getRequest();
 					return new AuthorizationDecision(ipAddressMatcher.matches(request));
