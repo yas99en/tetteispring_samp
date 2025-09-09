@@ -9,7 +9,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 // 8.2.6. プロファイルの指定 Springのプロファイル機能を使用したBean定義例(開発者のローカル環境向け)
 @Configuration
-@Profile("dev") // 開発者のローカル環境向けのBean定義
+@Profile("dev") // 開発者のローカル環境向けのBean定義 MessageServiceIntegrationTest1を参照
 public class DevContext {
 	
 	@Bean

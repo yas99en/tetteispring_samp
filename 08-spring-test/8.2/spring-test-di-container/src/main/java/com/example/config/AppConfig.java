@@ -16,7 +16,7 @@ public class AppConfig {
 	@Bean // MessageSourceのBean定義
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasenames("messages");
+		messageSource.setBasenames("messages"); // src/main/resources/messages.properties参照
 		return messageSource;
 	}
 
