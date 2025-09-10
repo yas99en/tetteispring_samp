@@ -5,10 +5,10 @@ import static org.hamcrest.MatcherAssert.*;
 
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,6 +30,16 @@ class AccountRepositoryTest2 {
 	@Autowired
 	@Qualifier("jdbcTemplateForAssertion")
 	JdbcTemplate jdbcTemplate;
+
+	@Test
+	@Order(0) // Testの実行順番を指定
+	@Sql("/account-delete.sql")
+	void testEmpty() {
+		// @Order(2) testTransaction()で
+		// データが0件であることを確認するため、
+		// ここでデータベースが空であることを保証する
+	}
+	
 	
 	// 8.3.3.1. トランザクション境界の移動 トランザクション境界をテストケースメソッドの前に移動する際の指定例
 	// メソッドレベルに指定した@Sql("/account-delete.sql")により、関連データが削除されてから本メソッドが実行される
