@@ -1,6 +1,6 @@
 package com.example.app;
 
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -12,18 +12,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.example.config.AppConfig;
-import com.example.config.WebMvcConfig;
 import com.example.domain.service.MessageService;
 
 // 8.4.2.2. スタンドアロンモード 依存コンポーネントをモック化する場合のセットアップ例
 @ExtendWith(MockitoExtension.class)
-@SpringJUnitWebConfig(classes = {WebMvcConfig.class, AppConfig.class})
+// 下記はstandaloneSetupを使う場合は不要
+//@SpringJUnitWebConfig(classes = {WebMvcConfig.class, AppConfig.class})
 class MessageRestControllerTest {
 
 	MockMvc mockMvc;
