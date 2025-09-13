@@ -1,13 +1,25 @@
 package com.example.app;
 
+import static org.junit.jupiter.api.Assertions.*;
+// 9.9.1.3. staticメソッドのインポート staticメソッドのインポート例
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.*;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -17,21 +29,6 @@ import com.example.config.WebMvcConfig;
 import com.example.config.WebSecurityConfig;
 import com.example.domain.model.Message;
 import com.example.domain.service.account.MessageService;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-// 9.9.1.3. staticメソッドのインポート staticメソッドのインポート例
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.*;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.*;
 
 //　9.9.1.2. Spring Securityのサーブレットフィルタの追加 Spring SecurityのBeanを登録するコンフィギュレーションクラスの指定例
 @ExtendWith(SpringExtension.class)
@@ -66,7 +63,7 @@ class WebSecurityTest {
     }
 
     // 9.9.2.2. ログアウトのテスト ログアウト処理のテストケース実装例
-    @WithMockUser
+    @WithMockUser // 事前にログイン状態にしておく
     @Test
     void testLogout() throws Exception {
         mockMvc.perform(logout())
@@ -83,7 +80,7 @@ class WebSecurityTest {
 	}
     
     // 9.9.3.1. アノテーションを使用した認証情報のセットアップ @WithUserDetailsの使用例
-	@WithUserDetails("general")
+	@WithUserDetails("general") // UserDetailsServiceで読み込んだユーザー情報を使用する
 	@Test
 	void testCreateByUserRole() {
 		 assertThrows(AccessDeniedException.class, () -> { // ロール不足により認可エラーが発生する
