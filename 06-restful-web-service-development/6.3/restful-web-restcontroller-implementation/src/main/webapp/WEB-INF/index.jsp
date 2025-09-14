@@ -55,7 +55,7 @@
 					}
 				}
 				// リクエスト送信
-				r.open("GET", "http://127.0.0.1:8090/restful-web-restcontroller-implementation/books/00000000-0000-0000-0000-000000000000");
+				r.open("GET", "http://127.0.0.1:"+location.port+"/restful-web-restcontroller-implementation/books/00000000-0000-0000-0000-000000000000");
 				r.setRequestHeader('X-Custom-Header', 'value'); // プリフライト方式を使用
 				r.send();
 			}
