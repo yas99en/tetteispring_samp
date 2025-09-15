@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,7 @@ public class BookService {
 		book.setName("書籍名");
 		book.setPublishedDate(LocalDate.of(2024,4,20));
 		bookRepository.put(book.getBookId(),book);
+		System.err.println("loadDummyData:"+bookRepository);
 	}
 	
 	public Book find(String bookId) {
@@ -48,6 +49,7 @@ public class BookService {
 	}
 	
 	public List<Book> findAllByCriteria(BookCriteria criteria) {
+	    System.err.println(bookRepository);
 		return bookRepository.values().stream()
 				.filter(book ->
 					(criteria.getName() == null

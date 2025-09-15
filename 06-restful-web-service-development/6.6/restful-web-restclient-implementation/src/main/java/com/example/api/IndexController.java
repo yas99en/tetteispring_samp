@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -85,7 +85,7 @@ public class IndexController {
 		ResponseEntity<Void> responseEntity = restOperations.postForEntity(
 				"http://localhost:8080/restful-web-restclient-implementation/books", resource, Void.class);
 		// ResponseEntityのgetStatusCodeメソッドを呼び出してHTTPステータスを取得する。
-		HttpStatus httpStatus = responseEntity.getStatusCode();
+		HttpStatusCode httpStatus = responseEntity.getStatusCode();
 		// ResponseEntityのgetHeadersメソッドを呼び出してレスポンスヘッダーを取得する。
 		HttpHeaders responseHeaders = responseEntity.getHeaders();
 		
