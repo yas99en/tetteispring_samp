@@ -29,18 +29,6 @@ public class AccountCreateAttributeController {
 		return "account/form1a";
 	}
 
-	// 確認画面をGetで表示する
-	@GetMapping("create1b")
-	public String confirm(Model model) {
-		return "account/createConfirm1a";
-	}
-
-	//　7.1.1.2　Modelからオブジェクトを取得する際の実装例  HttpSessionRequiredExceptionの確認用入力画面
-	@GetMapping("create4ng")
-	public String createNg(Model model) {
-		return "account/form4ng";
-	}
-
 	// 入力画面（属性名を使用） -->(フォームをSubmitする)--> 確認画面、redirectして、セッション値を確認する
 	@PostMapping("create1a")
 	public String create2(@Validated AccountCreateAttributeForm from, BindingResult result, ModelMap modelMap) {
@@ -49,13 +37,25 @@ public class AccountCreateAttributeController {
 		return "redirect:/accounts/create1b";
 	}
 
+	// 確認画面をGetで表示する
+	@GetMapping("create1b")
+	public String confirm(Model model) {
+		return "account/createConfirm1a";
+	}
+
 	//　7.1.1.2　Modelからオブジェクトを取得する際の実装例
 	@PostMapping("create1b")
-	public String create(@Validated AccountCreateAttributeForm from, 
+	public String create(@Validated AccountCreateAttributeForm from,  // formの中にpasswordがあるが空
 			BindingResult result,
-			@ModelAttribute("password") String password, 
+			@ModelAttribute("password") String password,  // セッションからpasswordを取得。こちらは中身あり
 			RedirectAttributes redirectAttributes) {
 			return "account/createComplete";
+	}
+
+	//　7.1.1.2　Modelからオブジェクトを取得する際の実装例  HttpSessionRequiredExceptionの確認用入力画面
+	@GetMapping("create4ng")
+	public String createNg(Model model) {
+		return "account/form4ng";
 	}
 
 	//　7.1.1.2　Modelからオブジェクトを取得する際の実装例 HttpSessionRequiredExceptionの確認

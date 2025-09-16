@@ -28,29 +28,17 @@ public class AccountCreateController {
 		return "account/form1";
 	}
 
-	// 入力画面（2/3）をGetで表示する
-	@GetMapping("create2")
-	public String create2(Model model) {
-		return "account/form2";
-	}
-
-	// 入力画面（3/3）をGetで表示する
-	@GetMapping("create3")
-	public String create3(Model model) {
-		return "account/form3";
-	}
-
-	// 確認画面をGetで表示する
-	@GetMapping("create")
-	public String confirm(Model model) {
-		return "account/createConfirm";
-	}
-
 	// 入力画面（1/3） -->(フォームをSubmitする)--> 入力画面（2/3）、redirectして、セッション値を確認する
 	//　7.1.1.2　Modelからオブジェクトを取得する際の実装例
 	@PostMapping("create1")
 	public String create2(@Validated AccountCreateForm from, BindingResult result) {
 		return "redirect:/accounts/create2";
+	}
+
+	// 入力画面（2/3）をGetで表示する
+	@GetMapping("create2")
+	public String create2(Model model) {
+		return "account/form2";
 	}
 
 	// 入力画面（2/3） -->(フォームをSubmitする)--> 入力画面（3/3）、redirectして、セッション値を確認する
@@ -59,10 +47,22 @@ public class AccountCreateController {
 		return "redirect:/accounts/create3";
 	}
 
+	// 入力画面（3/3）をGetで表示する
+	@GetMapping("create3")
+	public String create3(Model model) {
+		return "account/form3";
+	}
+
 	// 入力画面（3/3） -->(フォームをSubmitする)--> 確認画面、redirectして、セッション値を確認する
 	@PostMapping("create3")
 	public String confirm(@Validated AccountCreateForm from, BindingResult result) {
 		return "redirect:/accounts/create";
+	}
+
+	// 確認画面をGetで表示する
+	@GetMapping("create")
+	public String confirm(Model model) {
+		return "account/createConfirm";
 	}
 
 	@PostMapping("create")
