@@ -43,6 +43,9 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	@Transactional(readOnly = true)
 	public Room getRoomOfEquipment(Integer equipmentId) {
+		// SQLが2回発行されることに注意
+		// 1回目: EquipmentにRoomをJoinするSQL
+		// 2回目: Roomに対して、EquipmentのListを取得するSQL(FetchType.EAGERのため)
 		Equipment equipment = entityManager.find(Equipment.class, equipmentId);
 		return equipment.getRoom();
 	}
@@ -51,6 +54,9 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Room> getRoomsByName(String roomName) {
+		// SQLが2回発行されることに注意
+		// 1回目: RoomをroomNameで検索するSQL
+		// 2回目: Roomに対して、EquipmentのListを取得するSQL(FetchType.EAGERのため)
 		String jpql = "SELECT r FROM Room r WHERE r.roomName = :roomName";
 		TypedQuery<Room> query = entityManager.createQuery(jpql, Room.class);
 		query.setParameter("roomName", roomName);
