@@ -31,4 +31,12 @@ public class RoomController {
 		model.addAttribute("Room", res2.getRoomName());
 		return "room";
 	}
+	
+	@GetMapping("revert")
+	public String revert(Model model) {
+		Room res2 = roomService.checkUpdateRoomOptimisticLock(1, "RoomA");
+		model.addAttribute("Room", res2.getRoomName());
+		return "room";
+	}
+	
 }

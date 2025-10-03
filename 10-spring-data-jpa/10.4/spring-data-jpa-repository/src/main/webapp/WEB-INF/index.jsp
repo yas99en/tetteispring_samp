@@ -14,7 +14,9 @@
 		<li>「room情報取得」では、エラーとなりDB更新がされない。</li>
 		<li>コンソール画面にて「OptimisticLockingFailureException」をキャッチしている旨を確認する。</li>
 	</ol>
+	<p>※2回目以降は、DB上で直接ID=1のRoomの名前を「RoomA」に戻してから実施する</p>
 	<a href="<c:url value="/room" />">room情報取得</a>
 	<a href="<c:url value="/exclusion" />">排他制御確認</a>
+	<a href="<c:url value="/revert" />">ID1のRoom名をRoomAに戻す</a>
 </body>
 </html>
