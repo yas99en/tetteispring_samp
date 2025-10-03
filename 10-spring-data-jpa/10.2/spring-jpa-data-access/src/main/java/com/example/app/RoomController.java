@@ -42,8 +42,7 @@ public class RoomController {
 		
 		// ルームを削除する
 		// 動作確認を行なう場合は、「ルームを1件取得する」、「新しいルームを作成する」、「ルーム名を更新する」の箇所をコメントアウトしてください。
-		roomService.deleteRoom(3);
-
+		roomService.deleteRoom(res4.getRoomId());
 		return "room";
 	}
 	
