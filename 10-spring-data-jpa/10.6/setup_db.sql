@@ -1,4 +1,5 @@
 -- データベース
+DROP DATABASE IF EXISTS sample10_6;
 CREATE DATABASE sample10_6;
 \c sample10_6
 
