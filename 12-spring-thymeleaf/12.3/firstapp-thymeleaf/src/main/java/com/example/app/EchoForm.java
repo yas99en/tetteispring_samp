@@ -2,9 +2,8 @@ package com.example.app;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Size;
-
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class EchoForm implements Serializable {
     private static final long serialVersionUID = 1L;
