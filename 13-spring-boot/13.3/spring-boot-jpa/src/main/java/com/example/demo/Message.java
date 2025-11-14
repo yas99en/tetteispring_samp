@@ -2,7 +2,11 @@ package com.example.demo;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 // 13.3.2. Spring Data JPA エンティティの作成例
 @Table(name = "messages")
