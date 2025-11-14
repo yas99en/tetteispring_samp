@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.4</version> <!-- バージョンは執筆時点の最新 -->
+		<version>3.4.11</version> <!-- バージョンは執筆時点の最新 -->
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
