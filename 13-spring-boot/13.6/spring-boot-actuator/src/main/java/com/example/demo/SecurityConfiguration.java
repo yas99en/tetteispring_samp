@@ -18,8 +18,8 @@ public class SecurityConfiguration {
 			.securityMatcher(EndpointRequest.toAnyEndpoint())
 			.authorizeHttpRequests(requests -> requests
 				// 13.6.4.の動作確認を実施する場合はhasRole行のコメントアウトを外し、permitAll行をコメントアウトしてください
-				.anyRequest().hasRole("ENDPOINT_ADMIN")
-//				.anyRequest().permitAll()
+//				.anyRequest().hasRole("ENDPOINT_ADMIN")
+				.anyRequest().permitAll()
 			)
 			// 13.6.1.のshutdown（POST）の動作確認用にCSRF保護を無効化
 			// Spring Securityを有効にした場合、POSTメソッド実行時にCSRFトークンチェックが実行されてエラーとなるため
