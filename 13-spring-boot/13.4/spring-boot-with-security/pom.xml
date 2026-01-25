@@ -5,7 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.5.10</version>
+<!--		<version>3.4.4</version>-->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -14,7 +15,7 @@
 	<name>spring-boot-with-security</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<!-- 13.4. Spring BootでSpring Security pom.xmlの定義例 -->
@@ -47,7 +48,7 @@
 		</dependency>
 	    <dependency>
 	        <groupId>org.thymeleaf.extras</groupId>
-	        <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+	        <artifactId>thymeleaf-extras-springsecurity6</artifactId>
 	    </dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
