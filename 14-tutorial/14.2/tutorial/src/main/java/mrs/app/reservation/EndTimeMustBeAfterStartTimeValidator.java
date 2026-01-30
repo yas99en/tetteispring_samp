@@ -1,7 +1,7 @@
 package mrs.app.reservation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 // 14.2.7.4. 入力チェックの実装 EndTimeMustBeAfterStartTimeValidator.java
 public class EndTimeMustBeAfterStartTimeValidator implements ConstraintValidator<EndTimeMustBeAfterStartTime, ReservationForm> {

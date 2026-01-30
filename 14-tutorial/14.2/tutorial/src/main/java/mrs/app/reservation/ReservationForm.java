@@ -3,7 +3,7 @@ package mrs.app.reservation;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

@@ -6,18 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import mrs.domain.model.MeetingRoom;
-import mrs.domain.model.ReservableRoom;
-import mrs.domain.model.ReservableRoomId;
-import mrs.domain.model.Reservation;
-import mrs.domain.model.RoleName;
-import mrs.domain.model.User;
-import mrs.domain.service.reservation.AlreadyReservedException;
-import mrs.domain.service.reservation.ReservationService;
-import mrs.domain.service.reservation.UnavailableReservationException;
-import mrs.domain.service.room.RoomService;
-import mrs.domain.service.user.ReservationUserDetails;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
@@ -31,6 +19,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import mrs.domain.model.MeetingRoom;
+import mrs.domain.model.ReservableRoom;
+import mrs.domain.model.ReservableRoomId;
+import mrs.domain.model.Reservation;
+import mrs.domain.service.reservation.AlreadyReservedException;
+import mrs.domain.service.reservation.ReservationService;
+import mrs.domain.service.reservation.UnavailableReservationException;
+import mrs.domain.service.room.RoomService;
+import mrs.domain.service.user.ReservationUserDetails;
 
 @Controller
 @RequestMapping("reservations/{date}/{roomId}")

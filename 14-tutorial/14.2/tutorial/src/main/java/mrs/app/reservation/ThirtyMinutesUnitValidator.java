@@ -2,8 +2,8 @@ package mrs.app.reservation;
 
 import java.time.LocalTime;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 // 14.2.7.4. 入力チェックの実装 ThirtyMinutesUnitValidator.java
 public class ThirtyMinutesUnitValidator implements ConstraintValidator<ThirtyMinutesUnit, LocalTime> {
