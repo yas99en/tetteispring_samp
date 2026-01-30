@@ -13,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
 import com.example.security.MyAccessDeniedHandler;
@@ -31,9 +30,6 @@ public class WebSecurityConfig {
 //		this.accountUserDetailsService = accountUserDetailsService;
 //	}
 
-	public WebSecurityConfig() {
-	}
-
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.formLogin(login -> login
@@ -44,11 +40,11 @@ public class WebSecurityConfig {
 		.logout(logout -> logout
 				.logoutSuccessUrl("/logout").permitAll())
 		.authorizeHttpRequests(authz -> authz
-				.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).access((authentication, context) -> {
+				.requestMatchers("/resources/**").permitAll()
+				.requestMatchers("/").permitAll()
+				.requestMatchers("/general/**").hasRole("GENERAL")
+				.requestMatchers("/admin/**").hasRole("ADMIN")
+				.requestMatchers("/admin/**").access((authentication, context) -> {
 					IpAddressMatcher ipAddressMatcher = new IpAddressMatcher("127.0.0.1");
 					HttpServletRequest request = context.getRequest();
 					return new AuthorizationDecision(ipAddressMatcher.matches(request));

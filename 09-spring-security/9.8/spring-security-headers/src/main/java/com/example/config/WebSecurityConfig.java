@@ -2,12 +2,10 @@ package com.example.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.authorization.AuthorizationDecision;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,10 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
-import com.example.domain.service.account.AccountUserDetailsService;
 import com.example.security.MyAccessDeniedHandler;
 import com.example.security.MyAuthenticationEntryPoint;
 
@@ -27,12 +23,12 @@ import com.example.security.MyAuthenticationEntryPoint;
 @Import({WebMvcConfig.class, AppConfig.class})
 public class WebSecurityConfig {
 
-	private AccountUserDetailsService accountUserDetailsService;
-
-	@Autowired
-	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
-		this.accountUserDetailsService = accountUserDetailsService;
-	}
+//	private AccountUserDetailsService accountUserDetailsService;
+//
+//	@Autowired
+//	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
+//		this.accountUserDetailsService = accountUserDetailsService;
+//	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -45,11 +41,11 @@ public class WebSecurityConfig {
 		).logout(logout -> logout
 				.logoutSuccessUrl("/logout").permitAll() 
 		).authorizeHttpRequests(authz -> authz
-				.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).access((authentication, context) -> {
+				.requestMatchers("/resources/**").permitAll()
+				.requestMatchers("/").permitAll()
+				.requestMatchers("/general/**").hasRole("GENERAL")
+				.requestMatchers("/admin/**").hasRole("ADMIN")
+				.requestMatchers("/admin/**").access((authentication, context) -> {
 					IpAddressMatcher ipAddressMatcher = new IpAddressMatcher("127.0.0.1");
 					HttpServletRequest request = context.getRequest();
 					return new AuthorizationDecision(ipAddressMatcher.matches(request));
@@ -76,10 +72,10 @@ public class WebSecurityConfig {
 		return http.build();
 	}
 
-	@Autowired
-	public void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(accountUserDetailsService).passwordEncoder(passwordEncoder());
-	}
+//	@Autowired
+//	public void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(accountUserDetailsService).passwordEncoder(passwordEncoder());
+//	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {

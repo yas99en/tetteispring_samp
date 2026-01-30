@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.security.MyAccessDeniedHandler;
 import com.example.security.MyAuthenticationEntryPoint;
@@ -27,10 +26,6 @@ public class WebSecurityConfig {
 //		this.accountUserDetailsService = accountUserDetailsService;
 //	}
 
-	public WebSecurityConfig() {
-		
-	}
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> login
@@ -42,24 +37,25 @@ public class WebSecurityConfig {
         ).logout(logout -> logout
                 .logoutSuccessUrl("/logout").permitAll() 
         ).authorizeHttpRequests(authz -> authz
-        		.requestMatchers(new AntPathRequestMatcher("/resources/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                .requestMatchers("/resources/**").permitAll()
+                .requestMatchers("/").permitAll()
                 // 9.5.3.1. アクセスポリシーを適用するWebリソースの指定
                 // 書籍では「"ACCOUNT_MANAGER"」というロールを使った例が記載されていますが、本実装では「"GENERAL"」「"ADMIN"」のロールを使用しています。
-                .requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
-                .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                .requestMatchers("/general/**").hasRole("GENERAL")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         // 9.5.7.3 認可エラー時の遷移先 
         ).exceptionHandling((exceptionHandling) -> exceptionHandling
-				// 以下の動作確認を行なう場合は「9.5.7.4 デフォルト動作のカスタマイズ」箇所をコメントアウトしてください。
-        		// .accessDeniedPage("/WEB-INF/accessDeniedError.jsp") 
-        		// 9.5.7.4 デフォルト動作のカスタマイズ
+                // 以下の動作確認を行なう場合は「9.5.7.4 デフォルト動作のカスタマイズ」箇所をコメントアウトしてください。
+                // .accessDeniedPage("/WEB-INF/accessDeniedError.jsp") 
+                // 9.5.7.4 デフォルト動作のカスタマイズ
                 .authenticationEntryPoint(myAuthenticationEntryPoint())
                 .accessDeniedHandler(myAccessDeniedHandler())
         );
-        
+      
         return http.build();
     }
+
 
 //  SpringBoot3では、以下のコードは不要。
 //	@Autowired

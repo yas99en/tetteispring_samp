@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 
 // 13.4.2. 認証・認可のカスタマイズ フォーム認証を適用するためのBean定義例
@@ -24,8 +23,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(requests -> requests
-           		.requestMatchers(PathPatternRequestMatcher.withDefaults().matcher("/")).permitAll()
-           		.requestMatchers(PathPatternRequestMatcher.withDefaults().matcher("/home")).permitAll()
+                .requestMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

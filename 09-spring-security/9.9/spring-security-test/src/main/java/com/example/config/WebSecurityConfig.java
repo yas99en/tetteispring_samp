@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
 @Configuration 
@@ -24,9 +23,6 @@ public class WebSecurityConfig {
 //	public WebSecurityConfig(AccountUserDetailsService accountUserDetailsService) {
 //		this.accountUserDetailsService = accountUserDetailsService;
 //	}
-
-	public WebSecurityConfig() {
-	}
 	
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,11 +35,11 @@ public class WebSecurityConfig {
         ).logout(logout -> logout
                 .logoutSuccessUrl("/logout").permitAll()
         ).authorizeHttpRequests(authz -> authz
-                .requestMatchers(new AntPathRequestMatcher("/accounts/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/general/**")).hasRole("GENERAL")
-                .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-                .requestMatchers(new AntPathRequestMatcher("/admin/**")).access((authentication, context) -> {
+                .requestMatchers("/accounts/**").permitAll()
+                .requestMatchers("/").permitAll()
+                .requestMatchers("/general/**").hasRole("GENERAL")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**").access((authentication, context) -> {
                 	IpAddressMatcher ipAddressMatcher = new IpAddressMatcher("127.0.0.1");
                 	HttpServletRequest request = context.getRequest();
                 	return new AuthorizationDecision(ipAddressMatcher.matches(request));
