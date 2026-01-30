@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,6 @@ import io.micrometer.core.instrument.MeterRegistry;
 public class HelloController {
 	private final Counter counter;
 
-	@Autowired
 	public HelloController(MeterRegistry meterRegistry) {
 		counter = meterRegistry.counter("hello.count");
 	}
